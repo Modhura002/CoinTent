@@ -19,31 +19,15 @@ function Navbar({ onLogout }) {
         borderBottom: "1px solid #262626",
       }}
     >
+      {/* Logo */}
       <img src="/cointent-logo.svg" alt="CoinTent" style={{ height: "34px" }} />
 
+      {/* Navigation */}
       <div style={{ display: "flex", gap: "40px", alignItems: "center" }}>
         <NavItem to="/">Home</NavItem>
-        <NavItem to="/dashboard">Dashboard</NavItem>
         <NavItem to="/expenses">Expenses</NavItem>
         <NavItem to="/planner">Planner</NavItem>
         <NavItem to="/insights">Insights</NavItem>
-
-        {/* Profile Avatar */}
-        <div
-          style={{
-            width: "36px",
-            height: "36px",
-            borderRadius: "50%",
-            background: "#c7a17a",
-            color: "#0f0f0f",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontWeight: "600",
-          }}
-        >
-          U
-        </div>
 
         {/* Logout */}
         <motion.span
