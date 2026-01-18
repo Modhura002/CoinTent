@@ -1,9 +1,9 @@
 import Layout from "../components/layout/Layout";
 import { motion } from "framer-motion";
 
-function Home() {
+function Home({ user, onLogout }) {
   return (
-    <Layout>
+    <Layout user={user} onLogout={onLogout}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,6 @@ function Home() {
           and make smarter financial decisions—without spreadsheets or stress.
         </p>
 
-        {/* Summary Cards */}
         <div
           style={{
             display: "grid",
@@ -38,10 +37,7 @@ function Home() {
 
 function SummaryCard({ title, value }) {
   return (
-    <motion.div
-      className="card"
-      whileHover={{ scale: 1.03 }}
-    >
+    <motion.div className="card" whileHover={{ scale: 1.03 }}>
       <h3>{title}</h3>
       <p style={{ fontSize: "28px", marginTop: "10px" }}>{value}</p>
     </motion.div>
