@@ -2,27 +2,43 @@ import { useState } from "react";
 
 function BudgetPlanner() {
   const [posts, setPosts] = useState("");
-  const [budget, setBudget] = useState(null);
+  const [estimatedBudget, setEstimatedBudget] = useState(null);
 
   function calculateBudget() {
-    const estimated = posts * 800;
-    setBudget(estimated);
+    if (!posts) return;
+
+    // Fake AI logic for now
+    const costPerPost = 800;
+    const total = posts * costPerPost;
+
+    setEstimatedBudget(total);
   }
 
   return (
-    <div className="card" style={{ marginTop: "30px" }}>
-      <h3>AI Budget Planner</h3>
+    <div className="card">
+      <h3 style={{ marginBottom: "16px" }}>AI Budget Planner</h3>
 
       <input
-        placeholder="Posts per month"
+        type="number"
+        placeholder="Number of posts per month"
         value={posts}
         onChange={(e) => setPosts(e.target.value)}
+        style={{ marginBottom: "12px" }}
       />
-      <br /><br />
 
       <button onClick={calculateBudget}>Estimate Budget</button>
 
-      {budget && <p>Estimated Monthly Budget: ₹{budget}</p>}
+      {estimatedBudget && (
+        <div style={{ marginTop: "16px" }}>
+          <p>
+            Estimated Monthly Budget:{" "}
+            <strong>₹{estimatedBudget}</strong>
+          </p>
+          <p style={{ fontSize: "14px", color: "#6b7280" }}>
+            Based on average creator costs.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

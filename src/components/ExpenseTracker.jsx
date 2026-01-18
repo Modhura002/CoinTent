@@ -8,38 +8,48 @@ function ExpenseTracker() {
   function addExpense() {
     if (!amount || !category) return;
 
-    setExpenses([...expenses, { amount, category }]);
+    setExpenses([
+      ...expenses,
+      { amount: Number(amount), category },
+    ]);
+
     setAmount("");
     setCategory("");
   }
 
   return (
-    <div className="card" style={{ marginTop: "30px" }}>
-      <h3>Add Expense</h3>
+    <div className="card">
+      <h3 style={{ marginBottom: "16px" }}>Add Expense</h3>
 
-      <input
-        placeholder="Amount"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
-      <br /><br />
+      <div style={{ display: "flex", gap: "12px", marginBottom: "12px" }}>
+        <input
+          type="number"
+          placeholder="Amount (₹)"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
 
-      <input
-        placeholder="Category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
-      <br /><br />
+        <input
+          placeholder="Category (Ads, Tools, Travel...)"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        />
+      </div>
 
-      <button onClick={addExpense}>Add</button>
+      <button onClick={addExpense}>Add Expense</button>
 
-      <ul>
-        {expenses.map((e, index) => (
-          <li key={index}>
-            ₹{e.amount} – {e.category}
-          </li>
-        ))}
-      </ul>
+      {expenses.length > 0 && (
+        <div style={{ marginTop: "20px" }}>
+          <h4>Expense History</h4>
+          <ul style={{ paddingLeft: "18px" }}>
+            {expenses.map((e, index) => (
+              <li key={index}>
+                ₹{e.amount} — {e.category}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
