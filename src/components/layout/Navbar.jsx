@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Navbar() {
   return (
     <div
@@ -12,18 +14,34 @@ function Navbar() {
       {/* LOGO */}
       <img
         src="/cointent-logo.svg"
-        alt="CoinTent Logo"
+        alt="CoinTent"
         style={{ height: "32px" }}
       />
 
-      {/* MENU */}
-      <div style={{ display: "flex", gap: "32px", color: "#a3a3a3" }}>
-        <span>Dashboard</span>
-        <span>Expenses</span>
-        <span>Planner</span>
-        <span>Insights</span>
+      {/* NAV LINKS */}
+      <div style={{ display: "flex", gap: "32px" }}>
+        <NavItem to="/">Home</NavItem>
+        <NavItem to="/dashboard">Dashboard</NavItem>
+        <NavItem to="/expenses">Expenses</NavItem>
+        <NavItem to="/planner">Planner</NavItem>
+        <NavItem to="/insights">Insights</NavItem>
       </div>
     </div>
+  );
+}
+
+function NavItem({ to, children }) {
+  return (
+    <Link
+      to={to}
+      style={{
+        color: "#a3a3a3",
+        textDecoration: "none",
+        fontSize: "14px",
+      }}
+    >
+      {children}
+    </Link>
   );
 }
 
